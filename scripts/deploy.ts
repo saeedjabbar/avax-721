@@ -7,7 +7,6 @@ import { ethers } from "hardhat"
 const main = async (): Promise<any> => {
   const Coin: ContractFactory = await ethers.getContractFactory("CadenaNFT")
   const coin: Contract = await Coin.deploy()
-
   await coin.deployed()
   console.log(`Coin deployed to: ${coin.address}`)
 }
