@@ -9,7 +9,7 @@ import "@nomiclabs/hardhat-waffle"
 // For more information go to the hardhat guide
 // https://hardhat.org/hardhat-network/
 // https://hardhat.org/guides/mainnet-forking.html
-const FORK_FUJI = false
+const FORK_FUJI = true
 const FORK_MAINNET = false
 const forkingData = FORK_FUJI ? {
   url: 'https://api.avax-test.network/ext/bc/C/rpc',
@@ -26,7 +26,7 @@ task("accounts", "Prints the list of accounts", async (args, hre): Promise<void>
 
 task("balances", "Prints the list of AVAX account balances", async (args, hre): Promise<void> => {
   const accounts: SignerWithAddress[] = await hre.ethers.getSigners()
-  for(const account of accounts){
+  for (const account of accounts) {
     const balance: BigNumber = await hre.ethers.provider.getBalance(
       account.address
     );
@@ -51,6 +51,9 @@ export default {
       },
       {
         version: "0.8.0"
+      },
+      {
+        version: "0.8.4"
       }
     ]
   },
